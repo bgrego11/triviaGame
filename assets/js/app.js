@@ -1,7 +1,7 @@
 
 
 game = {
-
+	gameLive: false,
 	userGuess: "",
 	right: 0,
 	wrong: 0,
@@ -16,7 +16,8 @@ game = {
 			this.getQuestion();
 		}
 	},
-	questions:  [
+	questions: [],
+	quest_init: function() {this.questions =  [
 {
 "category": "History",
 "type": "multiple",
@@ -378,7 +379,7 @@ game = {
 ]
 }
 ]
-,
+},
 	activeQuestion: null,
 	choices : [],
 	shuffle: function(array) {
@@ -416,7 +417,8 @@ game = {
 
 	getQuestion: function() {
 		this.activeQuestion = this.questions[Math.floor(Math.random()*this.questions.length)];
-		this.questions.pop(this.activeQuestion);
+		rmvInd = this.questions.indexOf(this.activeQuestion);
+		this.questions.splice(rmvInd,1);
 		this.choiceGen(this.activeQuestion);
 		$('#question').html(this.activeQuestion.question);
 
@@ -426,12 +428,104 @@ game = {
 }
 
 
-game.getQuestion();
+$('#reset').on("click",function() {
+	game.gameLive = false;
+	game.quest_init();
+	game.wrong = 0;
+	game.right = 0;
+	$('#wrong').html("# Wrong: "+game.wrong);
+	$('#right').html("# Right: "+game.right);
+	$('#status').html("Ready");
+	stopwatch.stop();
+	stopwatch.reset();
+});
 
-$(".btn").on("click", function() {
-	answer = "#" + String($(this).data("val"));
-	game.userGuess = $(answer).html();
-	game.grader();
+$('#go').on("click", function(){
+	if (game.right === 0 || game.wrong === 0) {
+	game.quest_init();
+	game.gameLive = true;
+	game.getQuestion()
+	stopwatch.start();
+	$('#status').html("Good Luck!");
+}
+});
+
+
+
+$("td").on("click", function() {
+	if (game.gameLive)	{	
+		answer = $(this).html();
+		game.userGuess = answer;
+		game.grader();
+	};
+
 
 	
 });
+
+var intervalId;
+
+// Our stopwatch object
+var stopwatch = {
+
+  time: 0,
+  
+
+  reset: function() {
+
+    stopwatch.time = 0;
+    stopwatch.lap = 1;
+
+    // DONE: Change the "display" div to "00:00."
+    $("#display").html("00:00");
+
+    // DONE: Empty the "laps" div.
+  },
+  start: function() {
+
+    // DONE: Use setInterval to start the count here.
+    intervalId = setInterval(stopwatch.count, 1000);
+  },
+  stop: function() {
+
+    // DONE: Use clearInterval to stop the count here.
+    clearInterval(intervalId);
+  },
+ 
+  count: function() {
+
+    // DONE: increment time by 1, remember we cant use "this" here.
+    stopwatch.time++;
+
+    // DONE: Get the current time, pass that into the stopwatch.timeConverter function,
+    //       and save the result in a variable.
+    var converted = stopwatch.timeConverter(stopwatch.time);
+    console.log(converted);
+
+    // DONE: Use the variable we just created to show the converted time in the "display" div.
+    $("#display").html(converted);
+    if (stopwatch.time > 59) {
+    	stopwatch.stop();
+    	$('#status').html("Times Up");
+    	game.gameLive = false;
+    }
+  },
+  timeConverter: function(t) {
+
+    var minutes = Math.floor(t / 60);
+    var seconds = t - (minutes * 60);
+
+    if (seconds < 10) {
+      seconds = "0" + seconds;
+    }
+
+    if (minutes === 0) {
+      minutes = "00";
+    }
+    else if (minutes < 10) {
+      minutes = "0" + minutes;
+    }
+
+    return minutes + ":" + seconds;
+  }
+};

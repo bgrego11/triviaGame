@@ -4,8 +4,9 @@
 	<meta charset="UTF-8">
 	<title>Trivia</title>
 	<script type="text/javascript" src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
-	<style type="text/css" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"></style>
+	<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 	<script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="https://bootswatch.com/cyborg/bootstrap.min.css">
 
 </head>
 <body>
@@ -14,40 +15,37 @@
 	</div>
 	
 		
-	
-		<div class="well">
-			<div id="question">
-			The text of the Question
-			</div>
-		</div>
+		<button id="reset">New Game</button>
+		<button id="go">Begin</button>
+		
 		<table class="table table-bordered table-hover">
 			<thead>
 				<tr>
-					<th></th>
+					<th><div id="question">
+			The text of the Question
+			</div></th>
 				</tr>
 			</thead>
 			<tbody>
 				<tr>
 					<td id='0'></td>
-					<td><button type="button" data-val = '0' class="btn btn-default">A</button></td>
 				</tr>
 				<tr>
 					<td id='1'></td>
-					<td><button type="button" data-val = '1' class="btn btn-default">B</button></td>
 				</tr>
 				<tr>
 					<td id='2'></td>
-					<td><button type="button" data-val = '2' class="btn btn-default">C</button></td>
 				</tr>
 				<tr>
 					<td id='3'></td>
-					<td><button type="button" data-val = '3' class="btn btn-default">D</button></td>
 				</tr>
 			</tbody>
 		</table>
 
-		<div id="right"># Right</div>
-		<div id="wrong"># Wrong</div>
+		<div class="well" id="right"># Right: 0</div>
+		<div class="well" id="wrong"># Wrong: 0 </div>
+		<div class="well" id='display'></div>
+		<div class="well" id="status">Ready</div>
 						
 			
 			
