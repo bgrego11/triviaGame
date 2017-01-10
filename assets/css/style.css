@@ -1,0 +1,14 @@
+.well {
+	font-family: 'Playfair Display SC', serif;
+}
+
+#display {
+	font-size: 40px;
+	text-align: center;
+	font-weight: bolder;
+}
+#status {
+	font-size: 30px;
+	text-align: center;
+	font-weight: bolder;
+}

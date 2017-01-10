@@ -18,7 +18,128 @@ game = {
 	},
 	questions: [],
 	quest_init: function() {this.questions =  [
+		{
+"category": "Politics",
+"type": "multiple",
+"difficulty": "medium",
+"question": "Who was the British Prime Minister at the outbreak of the Second World War?",
+"correct_answer": "Neville Chamberlain",
+"incorrect_answers": [
+"Clement Attlee",
+"Winston Churchill",
+"Stanley Baldwin"
+]
+},
 {
+"category": "Politics",
+"type": "multiple",
+"difficulty": "medium",
+"question": "Who was the only president to not be in office in Washington D.C?",
+"correct_answer": "George Washington",
+"incorrect_answers": [
+"Abraham Lincoln",
+"Richard Nixon",
+"Thomas Jefferson"
+]
+},
+{
+"category": "Politics",
+"type": "multiple",
+"difficulty": "medium",
+"question": "Who was the 40th President of the USA?",
+"correct_answer": "Ronald Reagan",
+"incorrect_answers": [
+"Jimmy Carter",
+"Bill Clinton",
+"Richard Nixon"
+]
+},
+{
+"category": "Politics",
+"type": "multiple",
+"difficulty": "medium",
+"question": "Before 2011, &quot;True Capitalist Radio&quot; was known by a different name. What was that name?",
+"correct_answer": "True Conservative Radio",
+"incorrect_answers": [
+"True Republican Radio",
+"Texan Capitalist Radio",
+"United Capitalists"
+]
+},
+{
+"category": "Politics",
+"type": "multiple",
+"difficulty": "easy",
+"question": "Which of the following Pacific Islander countries is ruled by a constitutional monarchy?",
+"correct_answer": "Tonga",
+"incorrect_answers": [
+"Palau",
+"Fiji",
+"Kiribati"
+]
+},
+{
+"category": "Politics",
+"type": "multiple",
+"difficulty": "hard",
+"question": "Which Native American tribe/nation requires at least one half blood quantum (equivalent to one parent) to be eligible for membership?",
+"correct_answer": "Yomba Shoshone Tribe",
+"incorrect_answers": [
+"Standing Rock Sioux Tribe",
+"Kiowa Tribe of Oklahoma",
+"Pawnee Nation of Oklahoma"
+]
+},
+{
+"category": "Politics",
+"type": "multiple",
+"difficulty": "easy",
+"question": "The largest consumer market in 2015 was...",
+"correct_answer": "The United States of America",
+"incorrect_answers": [
+"Germany",
+"Japan",
+"United Kingdom"
+]
+},
+{
+"category": "Politics",
+"type": "multiple",
+"difficulty": "medium",
+"question": "The 2014 movie &quot;The Raid 2: Berandal&quot; was mainly filmed in which Asian country?",
+"correct_answer": "Indonesia",
+"incorrect_answers": [
+"Thailand",
+"Brunei",
+"Malaysia"
+]
+},
+{
+"category": "Politics",
+"type": "multiple",
+"difficulty": "easy",
+"question": "How many people are in the U.S. House of Representatives?",
+"correct_answer": "435",
+"incorrect_answers": [
+"260",
+"415",
+"50"
+]
+},
+{
+"category": "Politics",
+"type": "multiple",
+"difficulty": "hard",
+"question": "Which letter do you need to have on a European driver license in order to ride any motorbikes?",
+"correct_answer": "A",
+"incorrect_answers": [
+"X",
+"D",
+"B"
+]
+},
+{
+
 "category": "History",
 "type": "multiple",
 "difficulty": "hard",
@@ -446,7 +567,7 @@ $('#go').on("click", function(){
 	game.gameLive = true;
 	game.getQuestion()
 	stopwatch.start();
-	$('#status').html("Good Luck!");
+	$('#status').html("You have 1 minute ... Good Luck!");
 }
 });
 
@@ -506,7 +627,7 @@ var stopwatch = {
     $("#display").html(converted);
     if (stopwatch.time > 59) {
     	stopwatch.stop();
-    	$('#status').html("Times Up");
+    	$('#status').html("Times Up! You got "+game.right+" questions correct!");
     	game.gameLive = false;
     }
   },

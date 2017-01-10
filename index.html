@@ -7,22 +7,22 @@
 	<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 	<script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 	<link rel="stylesheet" type="text/css" href="https://bootswatch.com/cyborg/bootstrap.min.css">
-
+	<link href="https://fonts.googleapis.com/css?family=Playfair+Display+SC" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="assets/css/style.css">
 </head>
 <body>
 	<div class="page-header">
-	  <h1>Trivia<small> the game</small></h1>
+	  <h1>Historic<small> Trivia</small></h1>
 	</div>
 	
 		
-		<button id="reset">New Game</button>
-		<button id="go">Begin</button>
+		<button class="btn btn-default" id="reset">New Game</button>
+		<button class="btn btn-default" id="go">Begin</button>
 		
 		<table class="table table-bordered table-hover">
 			<thead>
 				<tr>
 					<th><div id="question">
-			The text of the Question
 			</div></th>
 				</tr>
 			</thead>
@@ -44,8 +44,11 @@
 
 		<div class="well" id="right"># Right: 0</div>
 		<div class="well" id="wrong"># Wrong: 0 </div>
-		<div class="well" id='display'></div>
-		<div class="well" id="status">Ready</div>
+		<div class="well">
+		<div  id="status">Ready</div>
+		 <div id='display'>--:--</div>
+		 </div>
+		
 						
 			
 			
